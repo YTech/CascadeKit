@@ -1,0 +1,66 @@
+excluded:
+  - Example 
+
+disabled_rules:
+  - trailing_comma
+  - identifier_name
+  - line_length
+  - xctfail_message
+
+opt_in_rules:
+
+cyclomatic_complexity: 20
+
+large_tuple:
+  warning: 4
+  error: 5
+
+function_body_length:
+  warning: 50
+  error: 50
+
+file_length:
+  warning: 1000
+  error: 1500
+
+identifier_name:
+  excluded:
+    - id
+    - ok
+  min_length:
+    warning: 1
+    error: 1
+
+type_name:
+  max_length: 50
+
+trailing_whitespace:
+  ignoresEmptyLines: false
+
+trailing_semicolon: warning
+
+trailing_newline: warning
+
+statement_position:
+  severity: warning
+
+return_arrow_whitespace: warning
+
+leading_whitespace: warning
+
+control_statement: warning
+
+conditional_returns_on_newline: warning
+
+comma: warning
+
+function_parameter_count: 6
+
+generic_type_name:
+  max_length: 30
+
+colon:
+  severity: error
+
+# reporter type (xcode, json, csv, checkstyle)
+reporter: "xcode"

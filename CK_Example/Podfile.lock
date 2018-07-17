@@ -1,0 +1,16 @@
+PODS:
+  - CascadeKit (1.0.0)
+
+DEPENDENCIES:
+  - CascadeKit (from `../`)
+
+EXTERNAL SOURCES:
+  CascadeKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  CascadeKit: 32246225d418c070c47e89f7ba18165ef3b45692
+
+PODFILE CHECKSUM: 64b11816126179c71e3b56ddec80f2f2b79923de
+
+COCOAPODS: 1.5.3

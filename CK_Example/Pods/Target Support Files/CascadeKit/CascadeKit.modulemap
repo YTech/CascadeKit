@@ -1,0 +1,6 @@
+framework module CascadeKit {
+  umbrella header "CascadeKit-umbrella.h"
+
+  export *
+  module * { export * }
+}

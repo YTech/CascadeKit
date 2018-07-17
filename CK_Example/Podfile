@@ -1,0 +1,4 @@
+use_frameworks!
+target 'CK_Example' do
+    pod 'CascadeKit', :path => '../'
+end
