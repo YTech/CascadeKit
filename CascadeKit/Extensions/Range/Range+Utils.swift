@@ -8,7 +8,6 @@ public protocol Rangeable { }
 
 extension CountableClosedRange: Rangeable { }
 extension CountableRange: Rangeable { }
-extension Range: Rangeable { }
 
 /// Make a CountableClosedRange conform to Codable
 extension CountableClosedRange: Codable {
