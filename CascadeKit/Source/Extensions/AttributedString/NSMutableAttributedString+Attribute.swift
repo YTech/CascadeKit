@@ -50,6 +50,7 @@ public extension NSMutableAttributedString {
     ///   - name: NSAttributedStringKey key value
     ///   - value: A value for the attribute
     ///   - range: A valid CountableClosedRange<Int>
+    #if !swift(>=4.2)
     public func addAttribute(_ name: NSAttributedStringKey, value: Any, range: CountableClosedRange<Int>) {
         guard let start = Array(range).first, let last = Array(range).last else {
             return
@@ -57,4 +58,13 @@ public extension NSMutableAttributedString {
 
         addAttribute(name, value: value, range: NSRange(location: start, length: last - start + 1))
     }
+    #else
+    public func addAttribute(_ name: NSAttributedString.Key, value: Any, range: CountableClosedRange<Int>) {
+        guard let start = Array(range).first, let last = Array(range).last else {
+            return
+        }
+
+        addAttribute(name, value: value, range: NSRange(location: start, length: last - start + 1))
+    }
+    #endif
 }
