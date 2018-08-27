@@ -19,17 +19,13 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
-import Foundation
 
-/// Attribute struct to decorate an attribute string
-public struct Attribute {
-    public var key: NSAttributedStringKey
-    public var value: Any
-    public var range: CountableClosedRange<Int>
+import XCTest
+@testable import CascadeKit
 
-    public init(key: NSAttributedStringKey, value: Any, range: CountableClosedRange<Int>) {
-        self.key = key
-        self.value = value
-        self.range = range
+class SubstringTest: XCTestCase {
+    func testSubstring() {
+        let range = 1...4
+        XCTAssertEqual("ello", "Hello World".substring(collection: range))
     }
 }

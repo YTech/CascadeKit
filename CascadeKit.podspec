@@ -15,5 +15,5 @@ Kit to manage Cascade Styles on UIKit text controls
 
   s.ios.deployment_target = '9.0'
 
-  s.source_files = 'CascadeKit/**/*'
+  s.source_files = 'CascadeKit/Source/**/*'
 end
