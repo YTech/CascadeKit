@@ -25,21 +25,20 @@ public extension Unicode.Scalar {
     /// Match the unicode scalar within the alphabet range
     ///
     /// - Parameters:
-    ///   - alphabets: A collection of Alphabet
-    ///   - isSpecialChar: If the scalar is a special char, it's returned straightaway, instead of
-    ///                    performing a match
+    ///   - alphabets    : A collection of Alphabet
+    ///   - isWhitelisted: If true it's a character the user wants to add to the Alphabet
+    ///
     /// - Returns: An Alphabet if exists
-    public func match(in alphabets: [Alphabet], isSpecialChar: Bool) -> Alphabet? {
+    public func match(in alphabets: [Alphabet], isWhitelisted: Bool) -> Alphabet? {
         guard
-            !isSpecialChar,
             !alphabets.isEmpty,
             let firstRange = alphabets.first else {
 
             return nil
         }
 
-        if firstRange.range ~= value { return firstRange }
+        if isWhitelisted || firstRange.range ~= value { return firstRange }
 
-        return match(in: Array(alphabets.dropFirst()), isSpecialChar: isSpecialChar)
+        return match(in: Array(alphabets.dropFirst()), isWhitelisted: isWhitelisted)
     }
 }
