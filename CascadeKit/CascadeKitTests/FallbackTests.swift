@@ -26,7 +26,7 @@ import XCTest
 class FallbackTest: XCTestCase {
     let content = "Hello"
     let range = 0...3
-    let fallback: Fallback = Fallback(content: "Hello", range: 0...3, type: .arabic, isSpecialChar: false)
+    let fallback: Fallback = Fallback(content: "Hello", range: 0...3, type: .arabic, isWhitelisted: false)
 
     func testFallback() {
         XCTAssertNotNil(fallback)

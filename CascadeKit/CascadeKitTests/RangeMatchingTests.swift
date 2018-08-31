@@ -25,29 +25,42 @@ import XCTest
 
 class RangeMatchingTest: XCTestCase {
     func testMatchUnicodeScalar() {
-        let type: Alphabet = ("a".unicodeScalars.first?.match(in: [.latin], isSpecialChar: false))!
+        let type: Alphabet = ("a".unicodeScalars.first?.match(in: [.latin], isWhitelisted: false))!
         XCTAssertEqual(type, .latin)
     }
 
     func testUnmatchUnicodeScalar() {
-        let type: Alphabet? = "a".unicodeScalars.first?.match(in: [.arabic], isSpecialChar: false)
+        let type: Alphabet? = "a".unicodeScalars.first?.match(in: [.arabic], isWhitelisted: false)
         XCTAssertNil(type)
     }
 
     func testSpecialScalarMatchInDifferentAlphabet() {
-        let type: Alphabet? = ("a".unicodeScalars.first?.match(in: [.arabic], isSpecialChar: true))
+        let type: Alphabet? = ("a".unicodeScalars.first?.match(in: [.arabic], isWhitelisted: true))
         XCTAssertNil(type)
     }
 
     func testSpecialScalarMatchInSameAlphabet() {
-        let type: Alphabet? = ("a".unicodeScalars.first?.match(in: [.latin], isSpecialChar: true))
+        let type: Alphabet? = ("a".unicodeScalars.first?.match(in: [.latin], isWhitelisted: true))
         XCTAssertNil(type)
     }
 
     func testFallbackMatching() {
         let expectation = self.expectation(description: "String matching")
         let sut = "hello"
-        sut.mapCascade(for: [.latin]) {
+        sut.mapCascade(for: [.latin, .russian]) {
+            XCTAssertEqual($0.content, sut)
+            XCTAssertEqual($0.range, 0...(sut.count - 1))
+            XCTAssertEqual($0.type, .latin)
+            expectation.fulfill()
+        }
+
+        waitForExpectations(timeout: 1.0, handler: nil)
+    }
+
+    func testFallBackMatchingOnDifferentAlphabets() {
+        let expectation = self.expectation(description: "String matching")
+        let sut = "hello Етиам"
+        sut.mapCascade(for: [.latin, .russian]) {
             XCTAssertEqual($0.content, sut)
             XCTAssertEqual($0.range, 0...(sut.count - 1))
             XCTAssertEqual($0.type, .latin)
