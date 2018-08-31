@@ -104,12 +104,12 @@
 			isa = PBXGroup;
 			children = (
 				E6F1F18A20FE1D29009AD04A /* AppDelegate.swift */,
-				E6F1F18C20FE1D29009AD04A /* ViewController.swift */,
-				E6F1F18E20FE1D29009AD04A /* Main.storyboard */,
 				E6F1F19120FE1D29009AD04A /* Assets.xcassets */,
-				E6F1F19320FE1D29009AD04A /* LaunchScreen.storyboard */,
 				E6F1F19620FE1D29009AD04A /* Info.plist */,
 				E64739562139A0170079F26C /* LanguagesViewModel.swift */,
+				E6F1F19320FE1D29009AD04A /* LaunchScreen.storyboard */,
+				E6F1F18E20FE1D29009AD04A /* Main.storyboard */,
+				E6F1F18C20FE1D29009AD04A /* ViewController.swift */,
 			);
 			path = CK_Example;
 			sourceTree = "<group>";

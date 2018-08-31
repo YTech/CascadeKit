@@ -24,19 +24,49 @@ import UIKit
 import CascadeKit
 
 class ViewController: UIViewController {
-    @IBOutlet private var stackView: UIStackView!
-
-    @IBOutlet private var textLabel: UILabel!
+    @IBOutlet private var tableView: UITableView!
+    @IBOutlet private var textView: UITextView!
 
     private let viewModel = LanguagesViewModel()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
         setupAttributes()
     }
 
     private func setupAttributes() {
-        textLabel.attributedText = self.viewModel.attributedText()
+        self.textView.attributedText = self.viewModel.attributedText()
+    }
+}
+
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+        return self.viewModel.availableAlphabets.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AlphabetCell", for: indexPath)
+
+        guard let currentAlphabet = self.viewModel.alphabet(at: indexPath.row) else {
+            fatalError("Sorry dudes, something wrong happened")
+        }
+        cell.textLabel?.text = currentAlphabet.rawValue
+
+        cell.accessoryType = self.viewModel.isAlphabetSelected(alphabet: currentAlphabet) ? UITableViewCellAccessoryType.checkmark : UITableViewCellAccessoryType.none
+
+        return cell
+    }
+}
+
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let _ = self.viewModel.clickedOnAlphabet(at: indexPath.row)
+
+        DispatchQueue.main.async {
+            self.setupAttributes()
+            self.tableView.reloadData()
+        }
     }
 }
