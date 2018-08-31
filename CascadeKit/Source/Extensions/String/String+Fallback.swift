@@ -26,11 +26,12 @@ public extension String {
     ///
     /// - Parameters:
     ///   - alphabets: A given list of Alphabets
-    ///   - chars: A list of carhs to avoid
+    ///   - chars: A list of chars to be added even if not included in the input Alphabet list
+    ///
     /// - Returns: A list of Fallback
-    public func fallbackRanges(for alphabets: [Alphabet], avoiding chars: [SpecialChar] = []) -> [Fallback] {
+    public func fallbackRanges(for alphabets: [Alphabet], including chars: [SpecialChar] = []) -> [Fallback] {
         var ranges: [Fallback] = []
-        mapCascade(for: alphabets, avoiding: chars) { fallback in
+        mapCascade(for: alphabets, including: chars) { fallback in
             ranges.append(fallback)
         }
 
@@ -41,12 +42,10 @@ public extension String {
     ///
     /// - Parameters:
     ///   - alphabets: A given list of Aphabets
-    ///   - chars: A list of carhs to avoid
+    ///   - chars: A list of chars to be added even if not included in the input Alphabet list
     ///   - block: Emit the Fallback
-    public func mapCascade(for alphabets: [Alphabet], avoiding chars: [SpecialChar] = [], _ block: @escaping (Fallback) -> Void) {
-        if Cache.shared.value(for: hashValue, block) {
-            return
-        }
+    public func mapCascade(for alphabets: [Alphabet], including chars: [SpecialChar] = [], _ block: @escaping (Fallback) -> Void) {
+        if Cache.shared.value(for: hashValue, block) { return }
 
         let transformedScalars = transform(for: alphabets, avoiding: chars)
 
@@ -75,12 +74,12 @@ public extension String {
         let transformedScalars = self.unicodeScalars.enumerated().compactMap { (arg) -> Fallback? in
             let (index, scalar) = arg
 
-            let isSpecialChar = chars.contains { $0.rawValue == scalar.value }
-            guard let match = scalar.match(in: alphabets, isSpecialChar: isSpecialChar) else {
+            let isWhitelisted = chars.contains { $0.rawValue == scalar.value }
+            guard let match = scalar.match(in: alphabets, isWhitelisted: isWhitelisted) else {
                 return nil
             }
 
-            return Fallback(content: String(scalar), range: index...index, type: match, isSpecialChar: isSpecialChar)
+            return Fallback(content: String(scalar), range: index...index, type: match, isWhitelisted: isWhitelisted)
         }
 
         return transformedScalars
@@ -100,7 +99,7 @@ public extension String {
 
         fallbacks.dropFirst().forEach { currentFallback in
             guard let merged = fallback.merge(fallback: currentFallback) else {
-                if !fallback.isSpecialChar {
+                if !fallback.isWhitelisted {
                     block(fallback)
                 }
                 fallback = currentFallback

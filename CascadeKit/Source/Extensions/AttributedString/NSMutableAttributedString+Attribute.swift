@@ -33,7 +33,7 @@ public extension NSMutableAttributedString {
     /// - Returns: A mutable attribute string
     @discardableResult
     public func addAttributes(for alphabets: [Alphabet], avoiding chars: [SpecialChar] = [], _ block: @escaping FallBackHandler) -> NSMutableAttributedString {
-        string.mapCascade(for: alphabets, avoiding: chars) { [weak self] (fallback) in
+        string.mapCascade(for: alphabets, including: chars) { [weak self] (fallback) in
             let attributes = block(fallback)
 
             attributes.forEach {

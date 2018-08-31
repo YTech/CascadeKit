@@ -24,8 +24,13 @@ import Foundation
 /// Custom protocol used for constraining purpose
 public protocol Rangeable { }
 
+#if !swift(>=3.4) || (swift(>=4) && !swift(>=4.1.5))
 extension CountableClosedRange: Rangeable { }
 extension CountableRange: Rangeable { }
+#endif
+
+extension ClosedRange: Rangeable { }
+extension Range: Rangeable { }
 
 /// Make a CountableClosedRange conform to Codable
 extension CountableClosedRange: Codable {
