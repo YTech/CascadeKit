@@ -46,9 +46,10 @@ public enum Alphabet: String, Codable {
         case .russianSupplementary: return 0x500...0x52F
         }
     }
+
+    public static var available: [Alphabet] = [.arabic, .greek, .greekExtended, .latin, .latinSupplementary, .myanmar, .russian, .russianSupplementary]
 }
 
-//Special chars
 public enum SpecialChar: UInt32 {
     case whiteSpace = 32
 }
