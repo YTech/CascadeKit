@@ -1,4 +1,3 @@
-
 warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
 
 warn "Please add the relevent label to PR when applicable" if github.pr_labels.empty?
@@ -15,26 +14,19 @@ warn("Big PR, Ignore if it's Pod Update") if git.lines_of_code > 1500
 
 # Warning, if unit tests not written when diff is more than 20 lines
 
-has_test_added = !git.modified_files.grep(/inseasonAppsTests/).empty?
+has_test_added = !git.modified_files.grep(/CascadeKitTests/).empty?
 
 
 if !(has_test_added) && git.lines_of_code > 20
   warn("No Unit Tests added as part of this PR. Ignore, if test wasn't required for this PR", sticky: false)
 end
 
-# Fail if Inseasons App names are not correct
-
-mrp_plist_contents = File.read "MRP/Supporting\ Files/Info.plist"
-nap_plist_contents = File.read "nap/Supporting\ Files/Info.plist"
-fail "NAP app has correct name" unless nap_plist_contents.include? "Net-A-Porter"
-fail "MRP app has correct name" unless mrp_plist_contents.include? "Mr Porter"
-
 swiftlint.config_file = '.swiftlint-ci.yml'
 swiftlint.binary_path = 'Pods/Swiftlint/swiftlint'
 swiftlint.lint_files
 swiftlint.lint_files inline_mode: true
 
-["inseasons-ios-apps.xcodeproj/project.pbxproj"].each do |project_file|
+["CascadeKit.xcodeproj/project.pbxproj"].each do |project_file|
  	next unless File.file?(project_file)
 	File.readlines(project_file).each_with_index do |line, index|
 		if line.include?("sourceTree = SOURCE_ROOT;") and line.include?("PBXFileReference")
@@ -42,7 +34,6 @@ swiftlint.lint_files inline_mode: true
 		end
 	end
 end
-
 
 #
 # Rules:
