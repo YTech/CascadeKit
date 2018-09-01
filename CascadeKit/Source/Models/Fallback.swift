@@ -35,7 +35,10 @@ public extension Fallback {
     /// - Parameter fallback: A valid Fallback
     /// - Returns: A new Fallback if exists
     public func merge(fallback: Fallback) -> Fallback? {
-        if range.upperBound != (fallback.range.lowerBound - 1) {
+        if
+            range.upperBound != (fallback.range.lowerBound - 1) ||
+            self.type != fallback.type {
+
             return nil
         }
 

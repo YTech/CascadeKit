@@ -89,22 +89,30 @@ public extension String {
     ///   - fallbacks: A Fallback collection
     ///   - block: The block to emit passing the Fallback
     private func emit(from fallbacks: [Fallback], block: (Fallback) -> Void) {
+        print("emit: --> ")
         guard var fallback = fallbacks.first else {
             return
         }
 
         fallbacks.dropFirst().forEach { currentFallback in
+            print("emit: --> current fallback \(currentFallback)")
+
             guard let merged = fallback.merge(fallback: currentFallback) else {
                 if !fallback.isWhitelisted {
+                    print("emit: --> emitting the block --> \(fallback)")
                     block(fallback)
                 }
+
                 fallback = currentFallback
+                print("emit: --> not merged --> \(fallback)")
                 return
             }
 
             fallback = merged
+            print("emit: --> merged --> \(fallback)")
         }
 
+        print("emit: --> emitting the block --> \(fallback)")
         block(fallback)
     }
 }

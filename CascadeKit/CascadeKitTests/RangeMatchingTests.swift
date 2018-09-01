@@ -60,11 +60,21 @@ class RangeMatchingTest: XCTestCase {
     func testFallBackMatchingOnDifferentAlphabets() {
         let expectation = self.expectation(description: "String matching")
         let sut = "hello Етиам"
+
+        var blockCounter = 0
+
         sut.mapCascade(for: [.latin, .russian]) {
-            XCTAssertEqual($0.content, sut)
-            XCTAssertEqual($0.range, 0...(sut.count - 1))
-            XCTAssertEqual($0.type, .latin)
-            expectation.fulfill()
+            blockCounter += 1
+            if blockCounter == 1 {
+                XCTAssertEqual($0.content, "hello ")
+                XCTAssertEqual($0.range, 0...5)
+                XCTAssertEqual($0.type, .latin)
+            } else if blockCounter == 2 {
+                XCTAssertEqual($0.content, "Етиам")
+                XCTAssertEqual($0.range, 6...10)
+                XCTAssertEqual($0.type, .russian)
+                expectation.fulfill()
+            }
         }
 
         waitForExpectations(timeout: 1.0, handler: nil)
