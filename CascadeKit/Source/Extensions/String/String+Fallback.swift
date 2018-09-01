@@ -45,14 +45,11 @@ public extension String {
     ///   - chars: A list of chars to be added even if not included in the input Alphabet list
     ///   - block: Emit the Fallback
     public func mapCascade(for alphabets: [Alphabet], including chars: [SpecialChar] = [], _ block: @escaping (Fallback) -> Void) {
-        if Cache.shared.value(for: hashValue, block) { return }
-
         let transformedScalars = transform(for: alphabets, avoiding: chars)
 
         if transformedScalars.isEmpty { return }
 
         let storedBlock = { (fallback: Fallback) in
-            Cache.shared.set(value: fallback, for: self.hashValue)
             block(fallback)
         }
 
@@ -61,7 +58,6 @@ public extension String {
         }
 
         emit(from: transformedScalars, block: storedBlock)
-        Cache.shared.synchronize()
     }
 
     /// Returns a list of `Fallback` based on the input `alphabet`.
@@ -93,22 +89,30 @@ public extension String {
     ///   - fallbacks: A Fallback collection
     ///   - block: The block to emit passing the Fallback
     private func emit(from fallbacks: [Fallback], block: (Fallback) -> Void) {
+        print("emit: --> ")
         guard var fallback = fallbacks.first else {
             return
         }
 
         fallbacks.dropFirst().forEach { currentFallback in
+            print("emit: --> current fallback \(currentFallback)")
+
             guard let merged = fallback.merge(fallback: currentFallback) else {
                 if !fallback.isWhitelisted {
+                    print("emit: --> emitting the block --> \(fallback)")
                     block(fallback)
                 }
+
                 fallback = currentFallback
+                print("emit: --> not merged --> \(fallback)")
                 return
             }
 
             fallback = merged
+            print("emit: --> merged --> \(fallback)")
         }
 
+        print("emit: --> emitting the block --> \(fallback)")
         block(fallback)
     }
 }

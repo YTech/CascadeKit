@@ -1,0 +1,39 @@
+skip_docs
+default_platform :ios
+
+platform :ios do
+
+    test_device = ENV["CI_DEVICE"] || "iPhone 6 (12.0)"
+    build_target = ENV["CI_BUILD_TARGET"] || "CascadeKit"
+    before_all do
+        ENV["FASTLANE_EXPLICIT_OPEN_SIMULATOR"] = "1"
+    end
+
+    desc "Runs XCTest for target build"
+        lane :xctest do
+            scan(
+            project: "CascadeKit/CascadeKit.xcodeproj",
+            scheme: build_target,
+            configuration: "Debug",
+            clean: true,
+            device: test_device
+            )
+        end
+
+    desc "Runs the main target build"
+    lane :unit_tests do |options|
+        app_scheme = options[:app]
+        UI.message "Running Unit Tests for #{app_scheme} target"
+        scan(
+        project: "CascadeKit/CascadeKit.xcodeproj",
+        scheme: app_scheme,
+        configuration: "Debug",
+        clean: true,
+        device: test_device
+        )
+    end
+
+    lane :swift do
+        ensure_swift_version(version: "Apple Swift version 4.2")
+    end
+end
