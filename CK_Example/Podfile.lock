@@ -1,5 +1,5 @@
 PODS:
-  - CascadeKit (1.0.0)
+  - CascadeKit (1.2.0)
 
 DEPENDENCIES:
   - CascadeKit (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  CascadeKit: c39731e77e267048a3485339b7c28d63fd2db8b0
+  CascadeKit: 3a203845ef5005e15e0f3f187bb86ab443abae73
 
 PODFILE CHECKSUM: 64b11816126179c71e3b56ddec80f2f2b79923de
 
