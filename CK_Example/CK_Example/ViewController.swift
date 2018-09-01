@@ -54,7 +54,11 @@ extension ViewController: UITableViewDataSource {
         }
         cell.textLabel?.text = currentAlphabet.rawValue
 
+        #if swift(>=4.2)
+        cell.accessoryType = self.viewModel.isAlphabetSelected(alphabet: currentAlphabet) ? UITableViewCell.AccessoryType.checkmark : UITableViewCell.AccessoryType.none
+        #else
         cell.accessoryType = self.viewModel.isAlphabetSelected(alphabet: currentAlphabet) ? UITableViewCellAccessoryType.checkmark : UITableViewCellAccessoryType.none
+        #endif
 
         return cell
     }

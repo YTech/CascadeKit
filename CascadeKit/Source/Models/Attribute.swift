@@ -24,7 +24,7 @@ import Foundation
 /// Attribute struct to decorate an attribute string
 public struct Attribute {
     #if swift(>=4.2)
-    typealias NSAttributedStringKey = NSAttributedString.Key
+    public 	typealias NSAttributedStringKey = NSAttributedString.Key
     #endif
 
     public var key: NSAttributedStringKey
@@ -39,9 +39,9 @@ public struct Attribute {
     }
     #else
     public init(key: NSAttributedString.Key, value: Any, range: CountableClosedRange<Int>) {
-    self.key = key
-    self.value = value
-    self.range = range
+        self.key = key
+        self.value = value
+        self.range = range
     }
     #endif
 }

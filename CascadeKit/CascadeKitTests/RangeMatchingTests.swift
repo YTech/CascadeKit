@@ -36,12 +36,12 @@ class RangeMatchingTest: XCTestCase {
 
     func testSpecialScalarMatchInDifferentAlphabet() {
         let type: Alphabet? = ("a".unicodeScalars.first?.match(in: [.arabic], isWhitelisted: true))
-        XCTAssertNil(type)
+        XCTAssertNotNil(type)
     }
 
     func testSpecialScalarMatchInSameAlphabet() {
         let type: Alphabet? = ("a".unicodeScalars.first?.match(in: [.latin], isWhitelisted: true))
-        XCTAssertNil(type)
+        XCTAssertNotNil(type)
     }
 
     func testFallbackMatching() {
