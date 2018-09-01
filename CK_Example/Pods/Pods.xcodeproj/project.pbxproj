@@ -101,6 +101,14 @@
 			path = String;
 			sourceTree = "<group>";
 		};
+		32A23E08346748F1793F899C5FF672C1 /* SwiftLint */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SwiftLint;
+			path = SwiftLint;
+			sourceTree = "<group>";
+		};
 		37BE8AEE272D4F3273BBD1D47030491F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +185,7 @@
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				6F9062B2C80ED15DC5D4404380B4F0AA /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				9758CC519AE2C57A9659FFC01AAD26F9 /* Pods */,
 				D945C2B981C5FEDAFD1C111D6C57CA49 /* Products */,
 				AA87ABF6A06CA2D09FDBE1595C438682 /* Targets Support Files */,
 			);
@@ -189,6 +198,14 @@
 			);
 			name = Alphabets;
 			path = CascadeKit/Source/Alphabets;
+			sourceTree = "<group>";
+		};
+		9758CC519AE2C57A9659FFC01AAD26F9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				32A23E08346748F1793F899C5FF672C1 /* SwiftLint */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		A75EFBD180EA3A2E12DECAA7E73F2F7E /* AttributedString */ = {

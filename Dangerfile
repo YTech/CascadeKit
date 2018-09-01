@@ -2,7 +2,7 @@ warn("PR is classed as Work in Progress") if github.pr_title.include? "[WIP]"
 
 warn "Please add the relevent label to PR when applicable" if github.pr_labels.empty?
 
-podfile_updated = !git.modified_files.grep(/Podfile/).empty?
+podfile_updated = !git.modified_files.grep(/Ck_Example/Podfile/).empty?
 
 # Warning, if Podfile changes
 if podfile_updated
@@ -22,7 +22,7 @@ if !(has_test_added) && git.lines_of_code > 20
 end
 
 swiftlint.config_file = '.swiftlint-ci.yml'
-swiftlint.binary_path = 'Pods/Swiftlint/swiftlint'
+swiftlint.binary_path = 'CK_Example/Pods/Swiftlint/swiftlint'
 swiftlint.lint_files
 swiftlint.lint_files inline_mode: true
 
