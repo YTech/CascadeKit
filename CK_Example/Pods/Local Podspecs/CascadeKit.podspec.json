@@ -1,6 +1,6 @@
 {
   "name": "CascadeKit",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "summary": "Kit to manage Cascade Styles on UIKit text controls",
   "description": "Kit to manage Cascade Styles on UIKit text controls",
   "homepage": "https://github.com/YTech/CascadeKit",
@@ -14,7 +14,7 @@
   },
   "source": {
     "git": "https://github.com/YTech/CascadeKit",
-    "tag": "1.0.0"
+    "tag": "1.2.0"
   },
   "platforms": {
     "ios": "9.0"
