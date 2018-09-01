@@ -1,5 +1,7 @@
 excluded:
   - CK_Example/Pods
+  - fastlane 
+  - vendor
 
 disabled_rules:
   - trailing_comma
