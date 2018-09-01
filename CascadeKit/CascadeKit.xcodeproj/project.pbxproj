@@ -210,6 +210,7 @@
 				E6D3CDE6213402020055D099 /* Sources */,
 				E6D3CDE7213402020055D099 /* Frameworks */,
 				E6D3CDE8213402020055D099 /* Resources */,
+				E6C948B7213B0C5500892B39 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -292,6 +293,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E6C948B7213B0C5500892B39 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "../Ck_Example/Pods/SwiftLint/swiftlint lint --config ../.swiftlint-ci.yml";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E6D3CDE6213402020055D099 /* Sources */ = {

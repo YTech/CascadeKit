@@ -66,7 +66,7 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let _ = self.viewModel.clickedOnAlphabet(at: indexPath.row)
+        _ = self.viewModel.clickedOnAlphabet(at: indexPath.row)
 
         DispatchQueue.main.async {
             self.setupAttributes()
