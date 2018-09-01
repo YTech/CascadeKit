@@ -1,8 +1,14 @@
 PODS:
   - CascadeKit (1.2.0)
+  - SwiftLint (0.27.0)
 
 DEPENDENCIES:
   - CascadeKit (from `../`)
+  - SwiftLint (= 0.27.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SwiftLint
 
 EXTERNAL SOURCES:
   CascadeKit:
@@ -10,7 +16,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   CascadeKit: 3a203845ef5005e15e0f3f187bb86ab443abae73
+  SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
-PODFILE CHECKSUM: 64b11816126179c71e3b56ddec80f2f2b79923de
+PODFILE CHECKSUM: c5e8b4e6d44c82ec77226f58810db7fc1ea8423f
 
 COCOAPODS: 1.5.3

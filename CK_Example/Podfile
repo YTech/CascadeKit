@@ -1,4 +1,6 @@
 use_frameworks!
 target 'CK_Example' do
     pod 'CascadeKit', :path => '../'
+
+    pod 'SwiftLint', '0.27.0'
 end

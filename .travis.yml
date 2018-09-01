@@ -23,7 +23,7 @@ before_script:
 - sleep 15
 - if [ $DANGER == "ALLOW" ]; then
           danger;
-          ./Pods/SwiftLint/swiftlint lint --config .swiftlint-ci.yml;
+          ./Ck_Example/Pods/SwiftLint/swiftlint lint --config .swiftlint-ci.yml;
       fi
 
 matrix:
