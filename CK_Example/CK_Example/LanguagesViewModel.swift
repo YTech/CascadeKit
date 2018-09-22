@@ -36,7 +36,7 @@ class LanguagesViewModel {
         }
 
         return NSMutableAttributedString(string: text).addAttributes(for: self.selectedAlphabets.map { self.availableAlphabets[$0] },
-                                                                     avoiding: [.whiteSpace]) {
+                                                                     including: [.whiteSpace]) {
                                                                         self.applyAttributes(fallback: $0)
         }
     }
