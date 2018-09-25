@@ -97,10 +97,8 @@ public extension String {
             print("emit: --> current fallback \(currentFallback)")
 
             guard let merged = fallback.merge(fallback: currentFallback) else {
-//                if !fallback.isWhitelisted {
-                    print("emit: --> emitting the block --> \(fallback)")
-                    block(fallback)
-//                }
+                print("emit: --> emitting the block --> \(fallback)")
+                block(fallback)
 
                 fallback = currentFallback
                 print("emit: --> not merged --> \(fallback)")
