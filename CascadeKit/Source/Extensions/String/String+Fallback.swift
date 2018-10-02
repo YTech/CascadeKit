@@ -45,7 +45,7 @@ public extension String {
     ///   - chars: A list of chars to be added even if not included in the input Alphabet list
     ///   - block: Emit the Fallback
     public func mapCascade(for alphabets: [Alphabet], including chars: [SpecialChar] = [], _ block: @escaping (Fallback) -> Void) {
-        let transformedScalars = transform(for: alphabets, avoiding: chars)
+        let transformedScalars = transform(for: alphabets, including: chars)
 
         if transformedScalars.isEmpty { return }
 
@@ -66,9 +66,8 @@ public extension String {
     ///
     /// - Parameter alphabets: A collection of Alphabet
     /// - Returns: A list of Fallback
-    private func transform(for alphabets: [Alphabet], avoiding chars: [SpecialChar]) -> [Fallback] {
-        let transformedScalars = self.unicodeScalars.enumerated().compactMap { (arg) -> Fallback? in
-            let (index, scalar) = arg
+    private func transform(for alphabets: [Alphabet], including chars: [SpecialChar]) -> [Fallback] {
+        let transformedScalars = self.unicodeScalars.enumerated().compactMap { index, scalar -> Fallback? in
 
             let isWhitelisted = chars.contains { $0.rawValue == scalar.value }
             guard let match = scalar.match(in: alphabets, isWhitelisted: isWhitelisted) else {
@@ -98,10 +97,8 @@ public extension String {
             print("emit: --> current fallback \(currentFallback)")
 
             guard let merged = fallback.merge(fallback: currentFallback) else {
-                if !fallback.isWhitelisted {
-                    print("emit: --> emitting the block --> \(fallback)")
-                    block(fallback)
-                }
+                print("emit: --> emitting the block --> \(fallback)")
+                block(fallback)
 
                 fallback = currentFallback
                 print("emit: --> not merged --> \(fallback)")
