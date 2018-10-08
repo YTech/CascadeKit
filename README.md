@@ -15,7 +15,7 @@ You can read more about this library on our [Company Medium Blog](https://medium
 3. [How to contribute](#how-to-contribute)
 4. [License and Credits](#license-and-credits)
 
-# How To use CascadeKit
+# How to use CascadeKit
 
 CascadeKit let you to easily apply UI customizations based on text content. Let's say you want to apply a blue color to Latin characters and a red color to Russian ones:
 
