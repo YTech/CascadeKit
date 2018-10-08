@@ -1,7 +1,7 @@
 # CascadeKit
 **CascadeKit** is a library to apply styles to UIKit text controls based on the content language (to be precise, to the *content script*).
 
-You can read more about this library on our [Company Medium Blog](https://medium.com/ynap-tech/our-approach-to-empowering-nsattributedstring-f6ecab72b9a9)
+You can read more about this library on our [Company Medium Blog](https://medium.com/ynap-tech/our-approach-to-empowering-nsattributedstring-f6ecab72b9a9).
 
 ## Build Status
 
@@ -10,8 +10,8 @@ You can read more about this library on our [Company Medium Blog](https://medium
 | Master | [![BuddyBuild](https://travis-ci.com/YTech/CascadeKit.svg?token=KFPPSquwqxaQf8SA7t7K&branch=master)](https://travis-ci.com/YTech/CascadeKit) |
 
 # Table of Contents
-1. [How to use CascadeKit](#how-to-use-cascadeKit)
-2. [How to install CascadeKit](#how-to-install-cascadeKit)
+1. [How to use CascadeKit](#how-to-use-cascadekit)
+2. [How to install CascadeKit](#how-to-install-cascadekit)
 3. [How to contribute](#how-to-contribute)
 4. [License and Credits](#license-and-credits)
 
