@@ -105,7 +105,7 @@ Add [CascadeKit folder](https://github.com/YTech/CascadeKit/tree/master/CascadeK
 # How to contribute
 Contributions are greatly welcome 🙌  If you'd like to improve this projects, just open an issue or raise a PR from the current develop branch.
 
-For any information or request feel free to contact me on twitter (@ennioma).
+For any information or request feel free open an [ISSUE](https://github.com/YTech/CascadeKit/issues).
 
 # License and Credits
 ## License:
