@@ -10,12 +10,11 @@ You can read more about this library on our [Company Medium Blog](https://medium
 | Master | [![BuddyBuild](https://travis-ci.com/YTech/CascadeKit.svg?token=KFPPSquwqxaQf8SA7t7K&branch=master)](https://travis-ci.com/YTech/CascadeKit) |
 
 # Table of Contents
-1. [How to use CascadeKit](#howTo)
-2. [How to install CascadeKit](#howToInstall)
-3. [How to contribute](#contribute)
-4. [License and Credits](#licenseCredits)
+1. [How to use CascadeKit](#how-to-use-cascadeKit)
+2. [How to install CascadeKit](#how-to-install-cascadeKit)
+3. [How to contribute](#how-to-contribute)
+4. [License and Credits](#license-and-credits)
 
-<a name="howTo"></a>
 # How To use CascadeKit
 
 CascadeKit let you to easily apply UI customizations based on text content. Let's say you want to apply a blue color to Latin characters and a red color to Russian ones:
@@ -85,7 +84,6 @@ let myAlphabets = [.greek, .greekExtended, .russian, .russianSupplementary]
 
 Your beautifully crafted content is ready to be diplayed in each language of the world! ☺️
 
-<a name="howToInstall"></a>
 # How to install CascadeKit
 ## CocoaPods
 Add CascadeKit to your Podfile
@@ -104,13 +102,11 @@ $ pod install
 ## Add CascadeKit source code to your project
 Add [CascadeKit folder](https://github.com/YTech/CascadeKit/tree/master/CascadeKit)  to your project.
 
-<a name="contribute"></a>
 # How to contribute
 Contributions are greatly welcome 🙌  If you'd like to improve this projects, just open an issue or raise a PR from the current develop branch.
 
 For any information or request feel free to contact me on twitter (@ennioma).
 
-<a name="licenseCredits"></a>
 # License and Credits
 ## License:
 CascadeKit is available under the MIT license. See the [LICENSE](https://github.com/YTech/CascadeKit/blob/master/LICENSE) file for more info.
