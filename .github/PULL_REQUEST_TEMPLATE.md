@@ -1,7 +1,7 @@
 # Description
 Please provide a brief description of the solution implemented in this PR
 
-# Check list (Optional)
+# Check list
 
 - [ ] Commits have a meaningful message
 - [ ] Public methods and properties are documented where appropriate
