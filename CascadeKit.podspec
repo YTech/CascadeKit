@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'CascadeKit'
-  s.version          = '1.2.2'
+  s.version          = '1.2.3'
   s.summary          = 'Kit to manage Cascade Styles on UIKit text controls'
   s.swift_version    = "4.0"
   s.description      = <<-DESC

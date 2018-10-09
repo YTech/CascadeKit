@@ -91,7 +91,7 @@ Add CascadeKit to your Podfile
 ```ruby
 use_frameworks!
 target 'MyTarget' do
-pod 'CascadeKit', '~> 1.2.1'
+pod 'CascadeKit', '~> 1.2.3'
 end
 ```
 
