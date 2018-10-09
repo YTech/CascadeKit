@@ -1,52 +1,10 @@
 language: objective-c
-osx_image: xcode9.3
-xcode_sdk: iphonesimulator11.3
-podfile: podfile
+osx_image: xcode10
 
-notifications:
-  email: false
-branches:
-  only:
-    - master
-    - /feature(s)?\/.+/
+before_install:
+    - gem intall fastlane --no-ri --no-rdoc --no-document
 
-before_install: |
-  ios_simulator_udid=$(instruments -s devices | grep "iPhone X 11.3" | sed -E 's/.*\[([0-9A-F-]+)\].*/\1/g')
-  echo "Prelaunching iOS simulator to run Tests"
-  open -a "simulator" --args -CurrentDeviceUDID $ios_simulator_udid
-
-before_script:
-- gem install fastlane --no-ri --no-rdoc --no-document
-- gem install danger --no-ri --no-rdoc --no-document
-- gem install danger-swiftlint --no-ri --no-rdoc --no-document
-- echo "Adding some sleep for simulator warmup on Travis VM"
-- sleep 15
-- if [ $DANGER == "ALLOW" ]; then
-          danger;
-          ./Ck_Example/Pods/SwiftLint/swiftlint lint --config .swiftlint-ci.yml;
-      fi
-
-matrix:
-  fast_finish: true
-  include:
-  - osx_image: xcode9.3
-    env: CI_BUILD_TARGET='nap' CI_DEVICE='iPhone X (11.3)' DANGER="ALLOW"
-  - osx_image: xcode9.3
-    env: CI_BUILD_TARGET='mrp' CI_DEVICE='iPhone X (11.3)'
-  - osx_image: xcode9.3
-    env: CI_BUILD_TARGET='napUITests' CI_DEVICE='iPhone X (11.3)'
-  - osx_image: xcode9.3
-    env: CI_BUILD_TARGET='napUITests' CI_DEVICE='iPad Air 2 (11.3)'
-  - osx_image: xcode9.3
-    env: CI_BUILD_TARGET='mrpUITests' CI_DEVICE='iPhone X (11.3)'
-  - osx_image: xcode9.3
-    env: CI_BUILD_TARGET='mrpUITests' CI_DEVICE='iPad Air 2 (11.3)'
-
-  allow_failures:
-    - env: CI_BUILD_TARGET='napUITests' CI_DEVICE='iPhone X (11.3)'
-    - env: CI_BUILD_TARGET='mrpUITests' CI_DEVICE='iPhone X (11.3)'
-    - env: CI_BUILD_TARGET='mrpUITests' CI_DEVICE='iPad Air 2 (11.3)'
-    - env: CI_BUILD_TARGET='napUITests' CI_DEVICE='iPad Air 2 (11.3)'
-
+install: true
 script:
-- fastlane xctest
+    - cd CascadeKit
+    - fastlane scan -s CascadeKit 
