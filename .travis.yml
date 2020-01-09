@@ -2,7 +2,7 @@ language: objective-c
 osx_image: xcode10
 
 before_install:
-    - gem intall fastlane --no-ri --no-rdoc --no-document
+    - gem install fastlane --no-ri --no-rdoc --no-document
 
 install: true
 script:
