@@ -1,13 +1,13 @@
 language: swift
-osx_image: xcode10
+osx_image: xcode11.2
 os: osx
+xcode_sdk: iphonesimulator13.2.2
 
 branches:
   only:
   - master
 
 before_script:
-  - bundle install
   - ./CK_Example/Pods/SwiftLint/swiftlint lint --config .swiftlint-ci.yml;
 
 jobs:
@@ -16,5 +16,5 @@ jobs:
       name: 'Library Unit Tests"
       env: 
         - CI_BUILD_TARGET='CascadeKit'
-        - OS='12.0'
+        - OS='13.2.2'
       script: travis/UnitTest.sh
