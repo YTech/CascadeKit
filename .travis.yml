@@ -16,5 +16,5 @@ jobs:
       name: 'Library Unit Tests'
       env: 
         - CI_BUILD_TARGET='CascadeKit'
-        - OS='13.2.2'
+        - OS='12.4'
       script: travis/UnitTest.sh
