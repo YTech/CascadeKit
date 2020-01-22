@@ -13,7 +13,7 @@ before_script:
 jobs:
   include:
     - stage: Unit Tests & Deploy
-      name: 'Library Unit Tests"
+      name: 'Library Unit Tests'
       env: 
         - CI_BUILD_TARGET='CascadeKit'
         - OS='13.2.2'
