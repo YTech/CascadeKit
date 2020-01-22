@@ -8,7 +8,6 @@ branches:
 
 before_script:
   - bundle install
-  #- bundle exec danger
   - ./CK_Example/Pods/SwiftLint/swiftlint lint --config .swiftlint-ci.yml;
 
 jobs:
