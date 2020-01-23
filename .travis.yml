@@ -1,10 +1,20 @@
-language: objective-c
-osx_image: xcode10
+language: swift
+osx_image: xcode11.2
+os: osx
+xcode_sdk: iphonesimulator13.2.2
 
-before_install:
-    - gem intall fastlane --no-ri --no-rdoc --no-document
+branches:
+  only:
+  - master
 
-install: true
-script:
-    - cd CascadeKit
-    - fastlane scan -s CascadeKit 
+before_script:
+  - ./CK_Example/Pods/SwiftLint/swiftlint lint --config .swiftlint-ci.yml;
+
+jobs:
+  include:
+    - stage: Unit Tests & Deploy
+      name: 'Library Unit Tests'
+      env: 
+        - CI_BUILD_TARGET='CascadeKit'
+        - OS='12.4'
+      script: travis/UnitTest.sh

@@ -1,7 +1,8 @@
 excluded:
   - CK_Example/Pods
-  - fastlane 
-  - vendor
+
+included:
+  - CK_Example
 
 disabled_rules:
   - trailing_comma
@@ -9,6 +10,7 @@ disabled_rules:
   - line_length
   - xctfail_message
   - todo
+  - duplicate_imports
 
 opt_in_rules:
 
@@ -58,6 +60,9 @@ conditional_returns_on_newline: warning
 comma: warning
 
 function_parameter_count: 6
+
+nesting:
+    type_level: 3
 
 generic_type_name:
   max_length: 30
